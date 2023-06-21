@@ -24,6 +24,7 @@ public class UserController {
     public Resp login(@RequestBody LoginReq req) throws Exception {
         UserVO res = userService.login(req);
         HttpSession httpSession = httpServletRequest.getSession();
+        httpSession.setAttribute("id", res.getId());
         httpSession.setAttribute("role", "user");
         return Resp.success(res);
     }
