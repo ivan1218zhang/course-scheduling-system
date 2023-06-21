@@ -12,13 +12,13 @@ import javax.annotation.Resource;
 public class AdminService {
     @Resource
     private AdminMapper adminMapper;
-    public String login(LoginReq req) throws Exception {
+    public AdminVO login(LoginReq req) throws Exception {
         // md5+base64加密密码
         req.setPassword(EncodeUtil.base64(EncodeUtil.md5(req.getPassword())));
         AdminVO adminVO = adminMapper.login(req);
         if (null == adminVO) {
             throw new Exception("管理员登陆失败");
         }
-        return adminVO.getNickname();
+        return adminVO;
     }
 }

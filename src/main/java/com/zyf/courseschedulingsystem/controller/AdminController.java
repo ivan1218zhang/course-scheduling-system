@@ -1,6 +1,7 @@
 package com.zyf.courseschedulingsystem.controller;
 
 import com.zyf.courseschedulingsystem.service.AdminService;
+import com.zyf.courseschedulingsystem.vo.admin.AdminVO;
 import com.zyf.courseschedulingsystem.vo.admin.LoginReq;
 import com.zyf.courseschedulingsystem.vo.Resp;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,10 +23,9 @@ public class AdminController {
 
     @PostMapping("/login")
     public Resp login(@RequestBody LoginReq req) throws Exception {
-        String res = adminService.login(req);
+        AdminVO res = adminService.login(req);
         HttpSession httpSession = httpServletRequest.getSession();
-        httpSession.setAttribute("nickname", res);
         httpSession.setAttribute("role", "admin");
-        return Resp.success(null);
+        return Resp.success(res);
     }
 }
