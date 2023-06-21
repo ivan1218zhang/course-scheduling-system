@@ -16,7 +16,7 @@ CREATE TABLE `admin` (
 -- Records of admin
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin` (`id`, `nickname`, `password`, `create_time`, `update_time`, `is_del`) VALUES (1, 'admin', 'OWU4ODkwYzgwMjNlYzY1ZGVlNjNmZjQwNWYzMWExYjg=', '2023-06-20 17:45:17', '2023-06-20 17:45:17', 0);
+INSERT INTO `admin` (`id`, `nickname`, `password`, `create_time`, `update_time`, `is_del`) VALUES (1, 'admin', 'OUU4ODkwQzgwMjNFQzY1REVFNjNGRjQwNUYzMUExQjg=', '2023-06-20 17:45:17', '2023-06-20 17:45:17', 0);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
