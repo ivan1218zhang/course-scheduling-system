@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/admin")
 public class AdminController {
     @Resource
-    HttpServletRequest httpServletRequest;
+    private HttpServletRequest httpServletRequest;
     @Resource
     private AdminService adminService;
 
