@@ -3,7 +3,7 @@ package com.zyf.courseschedulingsystem.service;
 import com.zyf.courseschedulingsystem.mapper.UserMapper;
 import com.zyf.courseschedulingsystem.util.EncodeUtil;
 import com.zyf.courseschedulingsystem.vo.user.UserVO;
-import com.zyf.courseschedulingsystem.vo.user.LoginReq;
+import com.zyf.courseschedulingsystem.vo.user.LoginReqVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 public class UserService {
     @Resource
     private UserMapper userMapper;
-    public UserVO login(LoginReq req) throws Exception {
+    public UserVO login(LoginReqVO req) throws Exception {
         // md5+base64加密密码
         req.setPassword(EncodeUtil.base64(EncodeUtil.md5(req.getPassword())));
         UserVO userVO = userMapper.login(req);
