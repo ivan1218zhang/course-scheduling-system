@@ -13,7 +13,12 @@
             (#{courseId}, #{classroomId}, #{time});
     </insert>
     <select id="list" resultType="com.zyf.courseschedulingsystem.vo.LessonVO">
-        select * from lesson where is_del = 0
+        select lesson.id as lessonId,course_id,course.name as course_name,user_id,user.name as user_name,classroom_id,classroom.name,time
+        from lesson
+            inner join course on course.id=course_id
+            inner join user on user.id = course.user_id
+            inner join classroom on classroom_id=classroom.id
+        where lesson.is_del = 0
         <if test="classroomId != null">
             and classroom_id = #{classroomId}
         </if>

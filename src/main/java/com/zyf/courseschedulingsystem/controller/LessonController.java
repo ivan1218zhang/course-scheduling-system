@@ -1,12 +1,10 @@
 package com.zyf.courseschedulingsystem.controller;
 
 import com.zyf.courseschedulingsystem.service.LessonService;
+import com.zyf.courseschedulingsystem.vo.LessonListReqVO;
 import com.zyf.courseschedulingsystem.vo.Resp;
 import com.zyf.courseschedulingsystem.vo.LessonCreateReqVO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,5 +31,9 @@ public class LessonController {
             lessonService.create(req);
         }
         return Resp.success(null);
+    }
+    @RequestMapping("/list")
+    public Resp list(LessonListReqVO req) {
+        return Resp.success(lessonService.list(req));
     }
 }

@@ -10,4 +10,19 @@
         </if>
         order by id;
     </select>
+    <select id="listClassAndLesson" resultType="com.zyf.courseschedulingsystem.vo.ClassVO">
+        select class_id,class.name,lesson_id
+        from class
+            inner join lesson_class_relation on class.id=class_id
+        where class.is_del = 0
+        <if test="lessonIdList!=null and lessonIdList.size()>0">
+            and lesson_id in (
+                <foreach collection="lessonIdList" item="lessonId" separator=",">
+                    #{lessonId}
+                </foreach>
+            )
+        </if>
+        order by class_id
+        ;
+    </select>
 </mapper>

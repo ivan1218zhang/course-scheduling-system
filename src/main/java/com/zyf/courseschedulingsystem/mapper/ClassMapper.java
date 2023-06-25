@@ -9,4 +9,5 @@ import java.util.List;
 @Mapper
 public interface ClassMapper {
     List<ClassVO> list(ClassListReqVO req);
+    List<ClassVO> listClassAndLesson(ClassListReqVO req);
 }
