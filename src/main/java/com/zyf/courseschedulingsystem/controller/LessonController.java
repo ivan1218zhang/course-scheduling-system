@@ -19,7 +19,7 @@ public class LessonController {
     private HttpServletRequest httpServletRequest;
     @Resource
     private LessonService lessonService;
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public Resp create(@RequestBody LessonCreateReqVO req) throws Exception {
         HttpSession httpSession = httpServletRequest.getSession();
         Object roleObject = httpSession.getAttribute("role");
@@ -28,6 +28,10 @@ public class LessonController {
             throw new Exception("用户权限错误");
         }
         req.setUserId((Integer) idObject);
-        return Resp.success(lessonService.create(req));
+        // 加独占锁 以防并发问题
+        synchronized (LessonController.class) {
+            lessonService.create(req);
+        }
+        return Resp.success(null);
     }
 }

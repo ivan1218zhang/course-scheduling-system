@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyf.courseschedulingsystem.mapper.LessonMapper">
+    <insert id="create">
+        <selectKey keyProperty="id" resultType="java.lang.Integer" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into lesson
+            (course_id, classroom_id, time)
+        VALUES
+            (#{courseId}, #{classroomId}, #{time});
+    </insert>
+    <select id="list" resultType="com.zyf.courseschedulingsystem.vo.LessonVO">
+        select * from lesson where is_del = 0
+        <if test="userId != null">
+            and course_id in (select id from course where user_id = #{userId})
+        </if>
+        <if test="time != null">
+            and time = #{time}
+        </if>
+        <if test="classIdList != null">
+            and id in (
+            select lesson_id from lesson_class_relation where class_id in (
+            <foreach collection="classIdList" item="classId" separator=",">
+                #{classId}
+            </foreach>
+            )
+            )
+        </if>
+        ;
+    </select>
+    <insert id="createLessonClassRelation">
+        insert into lesson_class_relation
+            (lesson_id, class_id)
+        VALUES
+            <foreach collection="classIdList" item="classId" separator=",">
+                (#{lessonId}, #{classId})
+            </foreach> ;
+    </insert>
+</mapper>
