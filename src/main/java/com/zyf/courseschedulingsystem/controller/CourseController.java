@@ -22,7 +22,7 @@ public class CourseController {
         HttpSession httpSession = httpServletRequest.getSession();
         Object o = httpSession.getAttribute("id");
         if (!(o instanceof Integer)) {
-            throw new Exception("用户未登陆");
+            throw new Exception("用户权限错误");
         }
         return Resp.success(courseService.list((Integer) o));
     }

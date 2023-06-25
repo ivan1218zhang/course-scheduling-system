@@ -1,10 +1,10 @@
 package com.zyf.courseschedulingsystem.mapper;
 
-import com.zyf.courseschedulingsystem.vo.admin.AdminVO;
-import com.zyf.courseschedulingsystem.vo.admin.LoginReqVO;
+import com.zyf.courseschedulingsystem.vo.AdminVO;
+import com.zyf.courseschedulingsystem.vo.AdminLoginReqVO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface AdminMapper {
-    AdminVO login(LoginReqVO req);
+    AdminVO login(AdminLoginReqVO req);
 }

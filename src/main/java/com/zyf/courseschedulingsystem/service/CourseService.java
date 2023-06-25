@@ -1,7 +1,7 @@
 package com.zyf.courseschedulingsystem.service;
 
 import com.zyf.courseschedulingsystem.mapper.CourseMapper;
-import com.zyf.courseschedulingsystem.vo.course.CourseVO;
+import com.zyf.courseschedulingsystem.vo.CourseVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

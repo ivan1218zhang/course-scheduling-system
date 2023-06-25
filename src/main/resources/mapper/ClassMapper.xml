@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zyf.courseschedulingsystem.mapper.ClassMapper">
-    <select id="list" resultType="com.zyf.courseschedulingsystem.vo.clazz.ClassVO">
+    <select id="list" resultType="com.zyf.courseschedulingsystem.vo.ClassVO">
         select * from class where is_del = 0
         <if test="courseId!=null">
             and id in (select class_id from course_class_relation where course_id = #{courseId})

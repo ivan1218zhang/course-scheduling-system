@@ -1,4 +1,4 @@
-package com.zyf.courseschedulingsystem.vo.classroom;
+package com.zyf.courseschedulingsystem.vo;
 
 import lombok.Data;
 

@@ -1,9 +1,9 @@
-package com.zyf.courseschedulingsystem.vo.clazz;
+package com.zyf.courseschedulingsystem.vo;
 
 import lombok.Data;
 
 @Data
-public class ClassVO {
+public class CourseVO {
     private Integer id;
     private String name;
 }

@@ -2,8 +2,8 @@ package com.zyf.courseschedulingsystem.controller;
 
 import com.zyf.courseschedulingsystem.service.UserService;
 import com.zyf.courseschedulingsystem.vo.Resp;
-import com.zyf.courseschedulingsystem.vo.user.LoginReqVO;
-import com.zyf.courseschedulingsystem.vo.user.UserVO;
+import com.zyf.courseschedulingsystem.vo.UserLoginReqVO;
+import com.zyf.courseschedulingsystem.vo.UserVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ public class UserController {
     @Resource
     private UserService userService;
     @PostMapping("/login")
-    public Resp login(@RequestBody LoginReqVO req) throws Exception {
+    public Resp login(@RequestBody UserLoginReqVO req) throws Exception {
         UserVO res = userService.login(req);
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("id", res.getId());

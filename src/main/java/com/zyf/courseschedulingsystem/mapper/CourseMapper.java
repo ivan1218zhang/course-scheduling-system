@@ -1,6 +1,6 @@
 package com.zyf.courseschedulingsystem.mapper;
 
-import com.zyf.courseschedulingsystem.vo.course.CourseVO;
+import com.zyf.courseschedulingsystem.vo.CourseVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

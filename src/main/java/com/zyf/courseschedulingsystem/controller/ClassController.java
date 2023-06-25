@@ -2,8 +2,8 @@ package com.zyf.courseschedulingsystem.controller;
 
 import com.zyf.courseschedulingsystem.service.ClassService;
 import com.zyf.courseschedulingsystem.vo.Resp;
-import com.zyf.courseschedulingsystem.vo.clazz.TimetableReqVO;
-import com.zyf.courseschedulingsystem.vo.course.ListReqVO;
+import com.zyf.courseschedulingsystem.vo.ClassTimetableReqVO;
+import com.zyf.courseschedulingsystem.vo.ClassListReqVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +16,11 @@ public class ClassController {
     @Resource
     private ClassService classService;
     @GetMapping("/list")
-    public Resp list(ListReqVO req) {
+    public Resp list(ClassListReqVO req) {
         return Resp.success(classService.list(req));
     }
     @GetMapping("/timetable")
-    public Resp timetable(TimetableReqVO req) {
+    public Resp timetable(ClassTimetableReqVO req) {
         return Resp.success(null);
     }
 }
