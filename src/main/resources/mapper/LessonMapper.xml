@@ -14,6 +14,9 @@
     </insert>
     <select id="list" resultType="com.zyf.courseschedulingsystem.vo.LessonVO">
         select * from lesson where is_del = 0
+        <if test="classroomId != null">
+            and classroom_id = #{classroomId}
+        </if>
         <if test="userId != null">
             and course_id in (select id from course where user_id = #{userId})
         </if>

@@ -68,4 +68,8 @@ public class LessonService {
                 .classIdList(req.getClassIdList())
                 .build());
     }
+
+    public List<LessonVO> list(LessonListReqVO req) {
+        return lessonMapper.list(req);
+    }
 }
