@@ -13,7 +13,7 @@
             (#{courseId}, #{classroomId}, #{time});
     </insert>
     <select id="list" resultType="com.zyf.courseschedulingsystem.vo.LessonVO">
-        select lesson.id as lessonId,course_id,course.name as course_name,user_id,user.name as user_name,classroom_id,classroom.name,time
+        select lesson.id as lessonId,course_id,course.name as course_name,user_id,user.name as user_name,classroom_id,classroom.name as classroomName,time
         from lesson
             inner join course on course.id=course_id
             inner join user on user.id = course.user_id
@@ -29,7 +29,7 @@
             and time = #{time}
         </if>
         <if test="classIdList != null">
-            and id in (
+            and lesson.id in (
             select lesson_id from lesson_class_relation where class_id in (
             <foreach collection="classIdList" item="classId" separator=",">
                 #{classId}

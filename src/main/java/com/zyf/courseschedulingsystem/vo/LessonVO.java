@@ -13,7 +13,7 @@ public class LessonVO {
     private Integer userId;
     private String userName;
     private Integer classroomId;
-    private Integer classroomName;
+    private String classroomName;
     private List<String> classList;
     private String time;
 }

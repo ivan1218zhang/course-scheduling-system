@@ -73,10 +73,11 @@ public class LessonService {
                 .build());
     }
 
-    public List<LessonVO> list(LessonListReqVO req) {
+    public List<LessonTableVO> list(LessonListReqVO req) {
+        List<LessonTableVO> res = new ArrayList<>();
         List<LessonVO> lessonVOList = lessonMapper.list(req);
         if (lessonVOList.size() == 0){
-            return lessonVOList;
+            return res;
         }
         // 装填班级信息
         // 根据lesson_id分类
@@ -96,6 +97,18 @@ public class LessonService {
             List<String> list = lessonVO.getClassList();
             list.add(classVO.getName());
         }
-        return lessonVOList;
+        // 转换成LessonTableVO
+        for (LessonVO lessonVO: lessonVOList) {
+            String[] time = lessonVO.getTime().split("-");
+            res.add(LessonTableVO
+                    .builder()
+                    .xq(Integer.valueOf(time[0]))
+                    .title(lessonVO.getCourseName())
+                    .start(Integer.valueOf(time[1]))
+                    .end(Integer.valueOf(time[1]))
+                    .content(lessonVO.getClassroomName()+"/"+String.join(" ",lessonVO.getClassList()))
+                    .build());
+        }
+        return res;
     }
 }
